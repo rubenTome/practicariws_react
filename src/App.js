@@ -1,14 +1,16 @@
 import './App.css';
 import Inicio from './Components/Inicio';
-
-import oak from "./Assets/Images/oak.png"
-import fondo from "./Assets/Images/fondo_pokedex_2.jpg"
+import Buscador from "./Components/Buscador"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Inicio url={oak} fondo={fondo}/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' Component={Inicio}/>
+        <Route path='/buscador' Component={Buscador}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
