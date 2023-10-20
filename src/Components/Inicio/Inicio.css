@@ -1,0 +1,13 @@
+.botonRedondo {
+    background:white;
+    margin-left: 12.25em;
+    margin-top: 1.5em;
+    width: 12.5em;
+    height:12.5em;
+    font-size: 1.25em;
+    border-radius: 50%;
+}
+
+.botonRedondo:hover {
+    background: greenyellow;
+}
