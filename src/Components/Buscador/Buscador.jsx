@@ -31,7 +31,6 @@ const Buscador = () => {
     const initialSelectedIndex = options.findIndex(({value}) => value === "VALOR");
 
     const urlSplit = window.location.href.split("?")
-    var resultado = "";
     if (urlSplit.length > 1) {
         const nombre = urlSplit[1].split("=")[1]
         fetch('http://localhost:9200/pokemon/_search', {
@@ -44,7 +43,8 @@ const Buscador = () => {
         })
         .then(response => response.json())
         .then(response => {
-            resultado = JSON.stringify(response)
+            const resultado = document.getElementById("resultado")
+            resultado.insertAdjacentText("afterbegin", JSON.stringify(response))
             console.log(resultado)
         })
     }
@@ -80,7 +80,7 @@ const Buscador = () => {
                                 <input type="submit" value="buscar"/>
                             </form>
                         </Grid>
-                        <Grid item xs={8}><p id="resultado"></p></Grid>{/*TODO COMO MOSTRAR RDOS*/}
+                        <Grid item xs={8}><div id="resultado"/></Grid>
                     </Grid>
                     {/*NUEVO COMPONENTE*/}
                 </div>
