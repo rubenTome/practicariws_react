@@ -23,31 +23,31 @@ const Buscador = () => {
             selectedFontColor: "black"
         }
     ];
-    
+
     const onChange = (newValue) => {
         console.log(newValue);
     };
-    
+
     const initialSelectedIndex = options.findIndex(({value}) => value === "VALOR");
 
-    function enviarNombre(event) {
-        log.textContent = input.value;
-        event.preventDefault();
+    const urlSplit = window.location.href.split("?")
+    var resultado = "";
+    if (urlSplit.length > 1) {
+        const nombre = urlSplit[1].split("=")[1]
+        fetch('http://localhost:9200/pokemon/_search', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"query":{"bool":{"must":[{"match":{"Nombre":nombre}}],"must_not":[],"should":[]}},"from":0,"size":1000,"sort":[],"aggs":{}})
+        })
+        .then(response => response.json())
+        .then(response => {
+            resultado = JSON.stringify(response)
+            console.log(resultado)
+        })
     }
-      
-    const form = document.getElementById("formulario");
-    const log = document.getElementById("resultado");
-    const input = document.getElementById("nombre");
-    
-    if(form) {
-        form.addEventListener("submit", enviarNombre);
-    }
-    //var request = new XMLHttpRequest()
-    //request.open("POST", "http://localhost:9200/pokemon/_search")
-    //request.send(JSON.stringify({"query":{"bool":{"must":[{"match":{"Nombre":input.value}}],"must_not":[],"should":[]}},"from":0,"size":1000,"sort":[],"aggs":{}}))
-    //request.addEventListener('load', () => {
-    //    console.log(request.responseText)
-    //})
 
     return (
         <main 
@@ -80,7 +80,7 @@ const Buscador = () => {
                                 <input type="submit" value="buscar"/>
                             </form>
                         </Grid>
-                        <Grid item xs={8}><p id="resultado"/></Grid>
+                        <Grid item xs={8}><p id="resultado"></p></Grid>{/*TODO COMO MOSTRAR RDOS*/}
                     </Grid>
                     {/*NUEVO COMPONENTE*/}
                 </div>
