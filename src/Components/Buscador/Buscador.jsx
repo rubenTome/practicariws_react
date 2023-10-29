@@ -1,6 +1,6 @@
 import { React } from "react"
 import SwitchSelector from "react-switch-selector" //version 1.2.1
-import Grid from '@mui/material/Grid';
+import BuscadorNombre from "../BuscadorNombre";
 
 const Buscador = () => {
     const options = [
@@ -30,27 +30,6 @@ const Buscador = () => {
 
     const initialSelectedIndex = options.findIndex(({value}) => value === "nombre");
 
-    const urlSplit = window.location.href.split("?")
-    if (urlSplit.length > 1) {
-        const nombre = urlSplit[1].split("=")[1]
-        fetch('http://localhost:9200/pokemon/_search', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({"query":{"bool":{"must":[{"match":{"Nombre":nombre}}],"must_not":[],"should":[]}},"from":0,"size":1000,"sort":[],"aggs":{}})
-        })
-        .then(response => response.json())
-        .then(response => {
-            const resultado = document.getElementById("resultado")
-            if(resultado.textContent === "") {
-                resultado.insertAdjacentText("afterbegin", JSON.stringify(response))
-            }
-            console.log(resultado)
-        })
-    }
-
     return (
         <main 
             style={{background:"blue"}}>
@@ -66,25 +45,8 @@ const Buscador = () => {
             <div 
                 style={{background:"red"}}>
                 <div 
-                style={{padding:"23.3em", background:"yellow"}}>
-                    {/*NUEVO COMPONENTE*/}
-                    <Grid 
-                        container
-                        direction="column"
-                        justifyContent="center"
-                        alignItems="center">
-                        <Grid item xs={8}>
-                            <form id="formulario">
-                                <label>
-                                    Nombre del pokémon:
-                                </label><br/>
-                                <input type="text" id="nombre" name="nombre"/>
-                                <input type="submit" value="buscar"/>
-                            </form>
-                        </Grid>
-                        <Grid item xs={8}><div id="resultado"/></Grid>
-                    </Grid>
-                    {/*NUEVO COMPONENTE*/}
+                style={{paddingTop:"5em", paddingBottom:"39.1em", paddingLeft:"23.3em", paddingRight:"23.3em", background:"yellow"}}>
+                    <BuscadorNombre/>
                 </div>
             </div>
         </main>
