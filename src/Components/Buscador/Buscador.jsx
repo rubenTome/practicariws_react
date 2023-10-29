@@ -28,7 +28,7 @@ const Buscador = () => {
         console.log(newValue);
     };
 
-    const initialSelectedIndex = options.findIndex(({value}) => value === "VALOR");
+    const initialSelectedIndex = options.findIndex(({value}) => value === "nombre");
 
     const urlSplit = window.location.href.split("?")
     if (urlSplit.length > 1) {
@@ -44,7 +44,7 @@ const Buscador = () => {
         .then(response => response.json())
         .then(response => {
             const resultado = document.getElementById("resultado")
-            if(resultado.textContent == "") {
+            if(resultado.textContent === "") {
                 resultado.insertAdjacentText("afterbegin", JSON.stringify(response))
             }
             console.log(resultado)
