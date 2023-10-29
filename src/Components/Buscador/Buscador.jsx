@@ -44,7 +44,9 @@ const Buscador = () => {
         .then(response => response.json())
         .then(response => {
             const resultado = document.getElementById("resultado")
-            resultado.insertAdjacentText("afterbegin", JSON.stringify(response))
+            if(resultado.textContent == "") {
+                resultado.insertAdjacentText("afterbegin", JSON.stringify(response))
+            }
             console.log(resultado)
         })
     }
