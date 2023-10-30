@@ -32,9 +32,8 @@ const Buscador = () => {
 
     return (
         <main 
-            style={{background:"blue"}}>
-            <div 
-                style={{padding:"2.5em", height:"3em", background:"green"}}>
+            style={{background:"yellow"}}>
+            <div style={{padding:"2.5em", height:"3em", background:"green"}}>
                 <SwitchSelector
                         onChange={onChange}
                         options={options}
@@ -42,13 +41,7 @@ const Buscador = () => {
                         backgroundColor={"#353b48"}
                         fontColor={"#f5f6fa"}/>
             </div>
-            <div 
-                style={{background:"red"}}>
-                <div 
-                style={{paddingTop:"5em", paddingBottom:"39.1em", paddingLeft:"23.3em", paddingRight:"23.3em", background:"yellow"}}>
-                    <BuscadorNombre/>
-                </div>
-            </div>
+            <BuscadorNombre/>
         </main>
     )
 }
