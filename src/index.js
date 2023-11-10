@@ -11,7 +11,7 @@ import {ReactiveBase, ReactiveList, MultiList, RangeSlider, ResultCard, DataSear
 
 const Buscador = () => {
     return (
-        <main style={{backgroundImage: `url(${fondo})`}}>
+        <main style={{background: "lightgray", padding: "2em"}}>
             <ReactiveBase 
                 app="pokemon"  
                 url="http://localhost:9200"
