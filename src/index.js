@@ -152,6 +152,8 @@ const Buscador = () => {
                                       <p>Tipo: {item.Tipo.map((tipo) => (<p>&emsp;{tipo}</p>))}</p>
                                       <p>Peso: {item['Peso(kg)']} kg.</p>
                                       <p>Altura: {item['Altura(m)']} m.</p>
+                                      <p>Prob. macho {item["ProbMacho"]}%</p>
+                                      <p>Prob. hembra {item["ProbHembra"]}%</p>
                                     </ResultCard.Description>
                                   </ResultCard>
                                 ))}
