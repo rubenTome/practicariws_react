@@ -4,6 +4,8 @@ Para ejecutar la aplicación, estando en el directorio raíz del proyecto escrib
 
 ### npm start
 
+Se asume que se tiene ejecutando simultáneamente un clúster de ElasticSearch, y que en consecuencia se ha creado el índice, el mapeado de las properties e insertado todos los elementos necesarios.
+
 
 ## Aclaraciones importantes
 
